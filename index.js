@@ -1,7 +1,5 @@
 const http = require("http");
 
-const server = http.createServer();
-
 
 
 const keepALive=["https://api.socialsphere.krishcode264.online/health","https://api.boldhug.krishcode264.online"]
@@ -14,9 +12,12 @@ const sendInterval = () => {
     }, 1000 *60*8);
   };
 
-
-
-server.listen(8080, () => {
-  console.log("server started ");
-  sendInterval()
-});
+  const server = http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end("Keep-alive server running.");
+  });
+  
+  server.listen(8080, () => {
+    console.log("Keep-alive server started on port 8080.");
+    sendInterval();
+  });
