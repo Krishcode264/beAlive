@@ -5,7 +5,7 @@ const keepALive = [
   "https://api.boldhug.krishcode264.online",
 ];
 const sendInterval = () => {
-  setInterval(async () => {
+  setTimeout(async () => {
     keepALive.forEach(async (url) => {
       console.log("sending req");
       await fetch(url, {
@@ -15,11 +15,12 @@ const sendInterval = () => {
         },
       });
     });
-  }, 1000 * 60 * 2);
+  }, 1000 * 60 * 5);
 };
 
 const server = http.createServer((req, res) => {
   res.writeHead(200);
+  sendInterval()
   res.end("Keep-alive server running.");
 });
 
