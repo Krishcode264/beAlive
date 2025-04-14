@@ -15,7 +15,7 @@ const sendInterval = () => {
         },
       });
     });
-  }, 1000 * 60 * 2);
+  }, 1000 * 60 * 5);
 };
 
 const server = http.createServer((req, res) => {
