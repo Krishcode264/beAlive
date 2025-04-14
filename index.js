@@ -15,12 +15,13 @@ const sendInterval = () => {
         },
       });
     });
-  }, 1000 * 60 * 5);
+  }, 1000 * 60 * 2);
 };
 
 const server = http.createServer((req, res) => {
+    sendInterval()
   res.writeHead(200);
-  sendInterval()
+
   res.end("Keep-alive server running.");
 });
 
